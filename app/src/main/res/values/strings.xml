@@ -1,0 +1,21 @@
+<resources>
+
+    <string name="app_name">MusicStructure</string>
+    <string name="library">Library</string>
+    <string name="favorites">Favorites</string>
+    <string name="recent">Recent</string>
+    <string name="playlist">Playlists</string>
+
+    <string name="back">Back</string>
+    <string name="play">Play</string>
+
+    <string name="currentMusic">One</string>
+    <string name="currentArtist">Metallica</string>
+
+    <string name="favorites_description">this is where the favorites would get stored if we used a SQL database or a dictionary for example,
+        but for the purposes of this activity, it's just a dummy activity</string>
+
+    <string name="recent_description">this is where the recents would get stored if we used a SQL database or a dictionary for example,
+        but for the purposes of this activity, it's just a dummy activity</string>
+
+</resources>
