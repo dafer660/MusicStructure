@@ -238,10 +238,7 @@
                 android:src="@mipmap/ic_fast_forward_black_24dp"
                 android:contentDescription="@string/play" />
 
-
         </LinearLayout>
-
-
 
     </LinearLayout>
 
