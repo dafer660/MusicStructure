@@ -1,6 +1,7 @@
 package com.example.danie.musicstructure;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
@@ -21,7 +22,8 @@ public class MusicActivity extends Activity {
         setContentView(R.layout.music_list);
 
         ListView musicListView = findViewById(R.id.m_list);
-        ImageView backButton = findViewById(R.id.music_backButton);
+        final ImageView backButton = findViewById(R.id.music_backButton);
+        final Intent goBack = new Intent(this, MainActivity.class);
 
         int musicIcon = R.mipmap.ic_library_music_black_24dp;
         int musicPlayIcon = R.mipmap.ic_play_arrow_black_24dp;
@@ -53,14 +55,15 @@ public class MusicActivity extends Activity {
         });
 
         backButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(MusicActivity.this, "Going back...", Toast.LENGTH_SHORT);
-                toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 0);
-                toast.show();
-                finish();
+                Toast.makeText(MusicActivity.this, "Going back...", Toast.LENGTH_SHORT).show();
+                goBack.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(goBack);
             }
         });
+
     }
 
     @Override

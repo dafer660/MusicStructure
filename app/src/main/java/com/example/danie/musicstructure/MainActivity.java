@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
         ImageView playIcon = findViewById(R.id.playIcon);
         ImageView fastForwardIcon = findViewById(R.id.fastForwardIcon);
 
+        favoritesIcon.setOnClickListener(this);
+        playIcon.setOnClickListener(this);
+        fastForwardIcon.setOnClickListener(this);
 
         LinearLayout library = findViewById(R.id.library_layout);
         library.setOnClickListener(new View.OnClickListener() {
@@ -61,34 +64,47 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        favoritesIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(MainActivity.this, "Saved to favorites...", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
 
-        playIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(MainActivity.this, "Playing track...", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+        // old way -> onClick added below with switch()
+//        favoritesIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast toast = Toast.makeText(MainActivity.this, "Saved to favorites...", Toast.LENGTH_SHORT);
+//                toast.show();
+//            }
+//        });
 
-        fastForwardIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(MainActivity.this, "Playing next track...", Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id){
+
+            case R.id.favoriteIcon:
+
+                // by clicking the favorites button this will be added to the favorites
+                final Intent saveToFavorites = new Intent(this, FavoritesActivity.class);
+                saveToFavorites.putExtra("song", "One");
+                saveToFavorites.putExtra("artist", "Metallica");
+                startActivity(saveToFavorites);
+
+                Toast.makeText(getBaseContext(), "Saved to favorites...", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.playIcon:
+                Toast.makeText(getBaseContext(), "Playing track...", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.fastForwardIcon:
+                Toast.makeText(getBaseContext(), "Playing next track...", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

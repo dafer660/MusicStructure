@@ -17,18 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PlaylistActivity">
-
-        </activity>
-        <activity android:name=".MusicActivity">
-
-        </activity>
-        <activity android:name=".FavoritesActivity">
-
-        </activity>
-        <activity android:name=".RecentActivity">
-
-        </activity>
+        <activity android:name=".PlaylistActivity"/>
+        <activity android:name=".MusicActivity"/>
+        <activity android:name=".FavoritesActivity"/>
+        <activity android:name=".RecentActivity"/>
     </application>
 
 </manifest>

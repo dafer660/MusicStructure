@@ -1,6 +1,7 @@
 package com.example.danie.musicstructure;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
@@ -21,6 +22,7 @@ public class PlaylistActivity extends Activity {
 
         ListView PlaylistListView = findViewById(R.id.p_list);
         ImageView playlist_backButton = findViewById(R.id.playlist_backButton);
+        final Intent goBack = new Intent(this, MainActivity.class);
 
         int playlistIcon = R.mipmap.ic_play_arrow_black_24dp;
 
@@ -45,7 +47,8 @@ public class PlaylistActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(PlaylistActivity.this, "Going back...", Toast.LENGTH_SHORT).show();
-                finish();
+                goBack.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(goBack);
             }
         });
     }
